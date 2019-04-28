@@ -11,7 +11,7 @@
     <groupId>pl.DanielModrzejewski</groupId>
     <artifactId>taco-cloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>taco-cloud</name>
+    <name>tacos-cloud</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
