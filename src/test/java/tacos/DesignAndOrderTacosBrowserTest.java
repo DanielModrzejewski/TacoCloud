@@ -1,12 +1,5 @@
 package tacos;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -20,6 +13,13 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -197,7 +197,7 @@ public class DesignAndOrderTacosBrowserTest {
     field.sendKeys(value);
   }
   
-  private void assertIngredient(WebElement ingredientGroup, 
+  private void assertIngredient(WebElement ingredientGroup,
                                 int ingredientIdx, String id, String name) {
     List<WebElement> proteins = ingredientGroup.findElements(By.tagName("div"));
     WebElement ingredient = proteins.get(ingredientIdx);

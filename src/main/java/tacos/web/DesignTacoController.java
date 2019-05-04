@@ -1,28 +1,21 @@
 package tacos.web;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import tacos.Taco;
+import org.springframework.web.bind.annotation.*;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
 import tacos.Order;
-import tacos.data.TacoRepository;
+import tacos.Taco;
 import tacos.data.IngredientRepository;
+import tacos.data.TacoRepository;
+
+import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 // tag::classShell[]
 @Controller
@@ -53,7 +46,7 @@ public class DesignTacoController {
   //tag::bothRepoCtor[]
   @Autowired
   public DesignTacoController(
-        IngredientRepository ingredientRepo, 
+        IngredientRepository ingredientRepo,
         TacoRepository designRepo) {
     this.ingredientRepo = ingredientRepo;
     this.designRepo = designRepo;
@@ -93,8 +86,8 @@ public class DesignTacoController {
   //tag::processDesign[]
   @PostMapping
   public String processDesign(
-      @Valid Taco design, Errors errors, 
-      @ModelAttribute Order order) {
+          @Valid Taco design, Errors errors,
+          @ModelAttribute Order order) {
 
     if (errors.hasErrors()) {
       return "design";
@@ -108,7 +101,7 @@ public class DesignTacoController {
   //end::processDesign[]
   
   private List<Ingredient> filterByType(
-      List<Ingredient> ingredients, Type type) {
+          List<Ingredient> ingredients, Type type) {
     return ingredients
               .stream()
               .filter(x -> x.getType().equals(type))
